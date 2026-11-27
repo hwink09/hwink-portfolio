@@ -1,0 +1,22 @@
+{
+  "Language": {
+    "trigger": "Change language"
+  },
+  "Theme": {
+    "trigger": "Change color theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "Home": {
+    "nextLogo": "Next.js logo",
+    "heading": "To get started, edit the <file></file> file.",
+    "intro": "Looking for a starting point or more instructions? Explore the <templates>templates</templates> or visit the <learn>learning center</learn>.",
+    "deploy": "Deploy Now",
+    "documentation": "Documentation"
+  },
+  "Metadata": {
+    "title": "Next.js Starter Page",
+    "description": "A Next.js starter page with English and Vietnamese language options."
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Language": {
+    "trigger": "Đổi ngôn ngữ"
+  },
+  "Theme": {
+    "trigger": "Đổi giao diện",
+    "light": "Sáng",
+    "dark": "Tối",
+    "system": "Theo hệ thống"
+  },
+  "Home": {
+    "nextLogo": "Logo Next.js",
+    "heading": "Để bắt đầu, hãy chỉnh sửa tệp <file></file>.",
+    "intro": "Bạn muốn tìm mẫu để bắt đầu hoặc xem thêm hướng dẫn? Hãy khám phá <templates>các mẫu có sẵn</templates> hoặc xem <learn>hướng dẫn học Next.js</learn>.",
+    "deploy": "Triển khai ngay",
+    "documentation": "Tài liệu"
+  },
+  "Metadata": {
+    "title": "Trang khởi đầu Next.js",
+    "description": "Trang khởi đầu Next.js hỗ trợ tiếng Anh và tiếng Việt."
+  }
+}
