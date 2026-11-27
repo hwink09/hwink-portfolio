@@ -8,28 +8,24 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 <!-- END:nextjs-agent-rules -->
 
-# AGENTS.md
+# Project Guidelines
 
 ## 1. Project Overview
 
-- Project name: hwink-portfolio
-- Project type: Personal developer portfolio
-- Purpose: Showcase technical skills, projects, experience,
-  and professional identity.
-- Target audience: Recruiters, developers, potential clients,
-  and collaborators.
+- Name: hwink-portfolio
+- Type: Personal developer portfolio
+- Goal: Showcase technical skills, projects, experience, and professional identity.
+- Audience: Recruiters, developers, potential clients, and collaborators.
 
-Build a distinctive, accessible, maintainable, and
-production-ready portfolio.
+Build a distinctive, accessible, performant, and maintainable portfolio.
 
-Prioritize quality over quantity and simplicity over
-unnecessary complexity.
+Prefer simplicity, consistency, and quality over unnecessary complexity.
 
 ## 2. Technology Stack
 
 ### Core
 
-- Next.js (App Router)
+- Next.js App Router
 - React
 - TypeScript
 - Tailwind CSS v4
@@ -37,80 +33,83 @@ unnecessary complexity.
 
 ### Planned Libraries
 
-- shadcn/ui
-- next-themes
-- next-intl
-- Motion
-- Lucide React
-- Vercel AI SDK
-- Zod
-- MDX
+- shadcn/ui — UI components
+- next-themes — theme management
+- next-intl — internationalization
+- Motion — animations
+- Lucide React — icons
+- Vercel AI SDK — AI assistant
+- Zod — schema validation
+- MDX — content management
 
 ### Development Tools
 
 - ESLint
 - Prettier
+- prettier-plugin-tailwindcss
 - Husky
 - lint-staged
 - Commitlint
 
-Inspect package.json before using any library.
+### Dependency Rules
 
-Do not assume that planned dependencies are already installed.
-Do not install new dependencies without explaining their purpose
-and obtaining approval.
+- Use pnpm exclusively.
+- Inspect package.json before using a dependency.
+- Do not assume planned libraries are installed.
+- Prefer existing dependencies and framework-native solutions.
+- Explain and obtain approval before adding dependencies.
+- Verify compatibility with the installed framework versions.
+- Keep pnpm-lock.yaml synchronized with package.json.
 
 ## 3. Agent Skills
 
 Project-level skills are located in `.agents/skills/`.
 
-Use the appropriate skill for each task:
-
 | Skill                       | Responsibility                                    |
 | --------------------------- | ------------------------------------------------- |
-| frontend-design             | Visual direction and distinctive frontend design  |
+| frontend-design             | Distinctive visual direction and frontend design  |
 | ui-ux-pro-max               | UI/UX research and design recommendations         |
-| design-system               | Design tokens and component consistency           |
+| design-system               | Design tokens and visual consistency              |
 | shadcn                      | Component implementation and registry integration |
 | vercel-react-best-practices | React and Next.js performance                     |
-| impeccable                  | Visual review and design refinement               |
+| impeccable                  | UI/UX auditing and visual refinement              |
 
-### Skill Usage Rules
+### Skill Rules
 
 - Read the relevant SKILL.md before applying a skill.
-- Select skills based on the current task.
-- Do not invoke every skill for every task.
-- Avoid conflicting or redundant skill instructions.
-- Project requirements take precedence over optional
-  stylistic suggestions from skills.
-- Review third-party scripts before executing them.
+- Use only skills relevant to the current task.
+- Avoid redundant or conflicting skill instructions.
+- Treat skills as guidance, not absolute requirements.
+- Project requirements take precedence over skill suggestions.
+- Do not modify third-party skill files.
+- Review external scripts before executing them.
 - Do not install additional skills without approval.
 
 ## 4. Development Workflow
 
-Follow this workflow for non-trivial tasks:
+For non-trivial tasks:
 
 1. Understand the requirements.
-2. Inspect the existing codebase.
-3. Read relevant documentation and Agent Skills.
-4. Identify affected files and dependencies.
-5. Propose an implementation plan.
-6. Obtain approval for significant changes.
-7. Implement the smallest complete solution.
-8. Validate the implementation.
-9. Review the final diff.
-10. Suggest a Conventional Commit message.
+2. Inspect the existing codebase and Git status.
+3. Read relevant documentation and skills.
+4. Propose an implementation plan.
+5. Wait for approval before significant changes.
+6. Implement the approved scope.
+7. Run relevant validation checks.
+8. Review the final diff.
+9. Report results and suggest a commit message.
+
+For small, explicitly requested changes, proceed directly when safe.
 
 ### General Rules
 
 - Do not implement unrelated features.
 - Do not modify unrelated files.
-- Do not perform unnecessary refactoring.
 - Do not overwrite existing user changes.
-- Do not introduce speculative abstractions.
-- Ask for clarification when requirements are ambiguous.
-- Explain important technical decisions.
-- Report blockers and incomplete work honestly.
+- Avoid unnecessary refactoring and abstractions.
+- Do not introduce speculative features.
+- Ask for clarification when ambiguity affects implementation.
+- Report limitations and blockers honestly.
 
 ## 5. Code Standards
 
@@ -118,46 +117,45 @@ Follow this workflow for non-trivial tasks:
 
 - Use strict TypeScript.
 - Avoid `any` unless explicitly justified.
-- Prefer type inference when appropriate.
-- Use meaningful and descriptive names.
-- Use `unknown` for untrusted values.
-- Validate external data at application boundaries.
+- Prefer type inference where appropriate.
+- Use descriptive names.
+- Validate untrusted data at application boundaries.
+- Avoid unnecessary type assertions.
 
 ### React and Next.js
 
 - Prefer Server Components by default.
-- Use Client Components only when required.
-- Keep client-side boundaries as small as practical.
-- Follow the current Next.js documentation.
-- Avoid deprecated APIs and patterns.
+- Use Client Components only when necessary.
+- Keep client-side boundaries small.
+- Follow documentation for the installed Next.js version.
+- Avoid deprecated APIs and conventions.
 - Avoid unnecessary useEffect and derived state.
 - Use appropriate loading and error boundaries.
-- Prefer framework-native features over extra dependencies.
-- Keep Cache Components disabled unless explicitly approved.
+- Keep Cache Components disabled unless approved.
+- Preserve React Compiler configuration.
+- Prefer framework-native solutions.
 
-### Styling
-
-- Use Tailwind CSS and semantic design tokens.
-- Prefer existing shadcn/ui components.
-- Avoid unnecessary custom CSS.
-- Avoid duplicated styling patterns.
-- Do not hardcode theme-dependent colors.
-- Keep component variants consistent.
-
-### Naming Conventions
+### Naming
 
 - Files and directories: kebab-case.
 - React components: PascalCase.
 - Functions and variables: camelCase.
 - Hooks: useSomething.
-- Constants: UPPER_SNAKE_CASE when appropriate.
-- Prefer the configured `@/` import alias.
+- Constants: UPPER_SNAKE_CASE where appropriate.
+- Use the configured `@/` import alias.
+
+### Maintainability
+
+- Prefer readable code over clever code.
+- Keep components focused and composable.
+- Extract reusable logic when justified.
+- Avoid premature abstraction.
+- Write comments for intent and non-obvious decisions.
+- Follow existing ESLint and Prettier conventions.
 
 ## 6. Project Structure
 
-Prefer a feature-oriented structure with clear boundaries.
-
-Suggested structure:
+Use the following structure as a guideline:
 
     src/
       app/
@@ -180,61 +178,58 @@ Suggested structure:
 ### Structure Rules
 
 - Keep routing and route-specific files in app/.
-- Keep reusable UI primitives in components/ui/.
+- Keep UI primitives in components/ui/.
 - Keep shared components in components/shared/.
-- Keep feature-specific logic within its feature.
-- Keep configuration separate from business logic.
-- Create directories only when they are needed.
-- Avoid empty folders and unnecessary abstraction layers.
-- Do not reorganize the entire project without approval.
+- Colocate feature-specific components and logic.
+- Separate configuration from application logic.
+- Create directories only when needed.
+- Avoid unnecessary architectural layers.
+- Do not reorganize the project without approval.
 
 ## 7. Design Principles
 
-The portfolio must have a distinctive visual identity.
+### Visual Direction
 
-### Design Direction
-
-- Professional developer-oriented aesthetic.
+- Distinctive and professional developer aesthetic.
 - Intentional typography and visual hierarchy.
 - Consistent spacing and alignment.
 - Thoughtful use of whitespace.
-- Subtle and purposeful animations.
-- Responsive and accessible interfaces.
+- Subtle, purposeful animations.
+- Responsive and accessible layouts.
 - Consistent light and dark themes.
 
 The final visual direction, typography, color palette,
 and layout must be approved before major UI implementation.
 
-### Anti AI-Slop Rules
+### Anti AI-Slop
 
-- Avoid generic AI-generated layouts.
+- Avoid generic AI-generated aesthetics.
 - Avoid excessive gradients and glowing effects.
 - Avoid excessive glassmorphism.
-- Avoid wrapping every section in a card.
-- Avoid unnecessary badges, icons, and decorations.
+- Avoid unnecessary rounded containers.
+- Do not wrap every section in a card.
 - Avoid repetitive layouts without visual purpose.
-- Avoid meaningless animations.
+- Avoid meaningless animations and decorations.
 - Avoid generic marketing copy.
 - Do not sacrifice usability for visual effects.
 
 ### Design References
 
 - Use approved references as inspiration.
-- Do not directly clone another developer's portfolio.
-- Do not invent design requirements.
-- Explain the purpose of major design decisions.
+- Do not directly clone other portfolios.
+- Do not invent visual requirements.
+- Explain important design decisions.
 
 ## 8. Component Strategy
 
 - Prefer existing shadcn/ui components.
-- Search approved open-source registries before creating
-  complex UI components from scratch.
-- Verify component compatibility and licensing.
+- Reuse existing components before creating new ones.
+- Explore approved open-source registries for complex UI.
+- Verify licenses and framework compatibility.
 - Adapt imported components to the project design system.
 - Avoid mixing incompatible visual styles.
-- Avoid duplicate components with similar responsibilities.
-- Do not install an entire component library for one component.
-- Keep components composable and maintainable.
+- Avoid unnecessary component dependencies.
+- Use semantic design tokens instead of hardcoded colors.
 
 Potential component sources:
 
@@ -246,11 +241,11 @@ Potential component sources:
 - Motion Primitives
 - AI Elements
 
-These are reference sources, not mandatory dependencies.
+These are optional references, not mandatory dependencies.
 
 ## 9. Theme
 
-Support the following theme modes:
+Support:
 
 - Light
 - Dark
@@ -260,10 +255,10 @@ Support the following theme modes:
 
 - Use next-themes when implemented.
 - Use semantic CSS variables and design tokens.
-- Avoid hardcoded light-only or dark-only colors.
+- Avoid hardcoded theme-dependent colors.
 - Prevent theme-related hydration mismatches.
 - Ensure sufficient contrast in both themes.
-- Test every major component in both light and dark mode.
+- Test major UI changes in both themes.
 
 ## 10. Internationalization
 
@@ -275,25 +270,25 @@ Support:
 ### Localization Rules
 
 - Use next-intl when implemented.
-- Keep translation messages organized by feature.
+- Organize translation messages by feature.
 - Avoid hardcoded user-facing strings.
-- Keep translation keys consistent between locales.
-- Localize metadata where appropriate.
+- Keep translation keys consistent across locales.
 - Preserve the current route when switching languages.
-- Use locale-aware date and number formatting.
+- Localize metadata, dates, and numbers where appropriate.
 - Test layouts with both languages.
 
-Source code, identifiers, comments, and commit messages
-should use English.
+### Language Conventions
 
-Communicate with the project owner in Vietnamese
-unless requested otherwise.
+- Source code: English.
+- Identifiers: English.
+- Code comments: English.
+- Commit messages: English.
+- Communication with the project owner: Vietnamese,
+  unless requested otherwise.
 
-## 11. Content and Features
+## 11. Planned Features
 
-Planned portfolio features:
-
-- Home and personal introduction.
+- Personal introduction.
 - About, education, and experience.
 - Technical skills.
 - Featured projects.
@@ -305,17 +300,17 @@ Planned portfolio features:
 - Command palette.
 - AI personal assistant.
 
+Implement features incrementally based on approved tasks.
+
 ### Content Rules
 
 - Never fabricate personal information.
-- Never fabricate work experience or achievements.
+- Never fabricate experience or achievements.
 - Never fabricate GitHub statistics.
 - Never present placeholder projects as completed work.
-- Use verified content provided by the project owner.
+- Use verified information provided by the project owner.
 - Clearly identify temporary placeholder content.
 - Do not expose private personal information.
-
-Implement features incrementally based on approved tasks.
 
 ## 12. AI Integration
 
@@ -326,16 +321,15 @@ developer's public profile, skills, experience, and projects.
 
 - Prefer Vercel AI SDK.
 - Support streaming responses when appropriate.
-- Keep model credentials on the server.
-- Ground responses in approved portfolio content.
-- Do not invent personal information.
+- Keep API credentials on the server.
+- Ground responses in approved public portfolio content.
 - Support Vietnamese and English.
 - Validate incoming requests.
 - Implement rate limiting and request size limits.
-- Handle API failures gracefully.
+- Handle provider failures gracefully.
 - Treat visitor input as untrusted.
-- Do not expose system prompts or private data.
-- Do not add RAG or vector databases unless justified.
+- Do not expose secrets or private data.
+- Do not add RAG or vector databases without justification.
 
 ## 13. Accessibility and Performance
 
@@ -344,8 +338,7 @@ developer's public profile, skills, experience, and projects.
 - Use semantic HTML.
 - Support keyboard navigation.
 - Provide visible focus states.
-- Use accessible labels.
-- Provide meaningful image alt text.
+- Use accessible labels and meaningful alt text.
 - Respect prefers-reduced-motion.
 - Aim for WCAG 2.2 AA compliance.
 
@@ -353,59 +346,57 @@ developer's public profile, skills, experience, and projects.
 
 - Minimize unnecessary client-side JavaScript.
 - Optimize images and fonts.
-- Avoid unnecessary network requests.
-- Avoid unnecessary re-renders.
+- Avoid unnecessary network requests and re-renders.
 - Prevent layout shifts.
-- Lazy-load expensive features when appropriate.
-- Do not introduce caching complexity without a clear need.
+- Lazy-load expensive features where appropriate.
+- Avoid unnecessary caching complexity.
+- Apply relevant vercel-react-best-practices guidance.
 
 ## 14. SEO
 
 - Use the Next.js Metadata API.
-- Provide meaningful page titles and descriptions.
+- Provide meaningful titles and descriptions.
 - Support localized metadata.
-- Configure canonical URLs and hreflang when applicable.
+- Configure canonical URLs and hreflang where applicable.
 - Provide Open Graph metadata.
-- Provide sitemap.xml and robots.txt.
-- Use structured data only when accurate.
+- Provide sitemap and robots configuration.
+- Use accurate structured data when appropriate.
 - Maintain semantic heading hierarchy.
 
 ## 15. Security
 
-- Never expose secrets or API keys.
+- Never expose API keys, credentials, or secrets.
 - Never commit private environment files.
-- Use environment variables for sensitive configuration.
-- Maintain a safe .env.example when required.
+- Use server-side environment variables for secrets.
+- Maintain a safe .env.example when needed.
 - Validate external input.
-- Sanitize untrusted content when necessary.
 - Avoid unsafe HTML rendering.
-- Review third-party dependencies before installation.
-- Do not execute untrusted scripts blindly.
+- Review third-party dependencies and scripts.
 - Do not weaken security controls to bypass errors.
 
 ## 16. Git Workflow
 
-Use a simple GitHub Flow suitable for a personal project.
+Use a lightweight GitHub Flow suitable for a personal project.
 
-### Branches
+### Branch Strategy
 
 - main: Stable and deployable code.
 - feat/\*: Significant new features.
 - fix/\*: Bug fixes.
-- chore/\*: Significant configuration changes.
+- chore/\*: Configuration and tooling changes.
 - refactor/\*: Significant code restructuring.
 
-Small, approved changes may be committed directly to main.
+Small, approved changes may be made directly on main.
 
 ### Conventional Commits
 
-Use the following format:
+Format:
 
     <type>(<scope>): <description>
 
 The scope is optional.
 
-Allowed commit types:
+Allowed types:
 
 - feat
 - fix
@@ -421,41 +412,39 @@ Allowed commit types:
 
 Examples:
 
-    chore: initialize project configuration
-    chore: add project-level agent skills
-    chore: configure prettier and commitlint
-    feat(theme): add light and dark mode
+    chore: configure development tooling
+    chore: initialize shadcn/ui
+    feat(theme): add theme switching
     feat(i18n): add Vietnamese and English localization
     feat(projects): implement project showcase
     fix(nav): resolve mobile navigation overflow
-    refactor(ui): simplify shared components
     docs: update project documentation
 
-### Commit Rules
+### Git Rules
 
 - Write commit messages in English.
 - Use concise, imperative descriptions.
-- Keep commits small, focused, and atomic.
-- Separate unrelated changes into different commits.
+- Keep commits focused and atomic.
+- Separate unrelated changes.
 - Inspect git status and git diff before staging.
-- Stage only files related to the current task.
+- Stage only files relevant to the approved task.
 - Avoid blindly using git add .
-- Do not commit secrets or generated build artifacts.
 - Commit dependency lockfiles when dependencies change.
-- Commit approved project-level Agent Skills and their
-  lockfiles when applicable.
-- Run relevant checks before committing.
-- Do not bypass Git hooks to hide validation failures.
+- Commit approved project-level skills and their lockfiles
+  when licensing permits.
+- Never commit secrets or generated build artifacts.
+- Run relevant validation checks before committing.
+- Never bypass Git hooks to conceal validation failures.
 - Never commit or push without explicit user approval.
-- Never force-push or rewrite Git history without approval.
+- Never force-push or rewrite history without approval.
 - Never discard existing user changes.
-- Suggest a commit message after completing each task.
+- Suggest a Conventional Commit message after each task.
 
-## 17. Quality Checks
+## 17. Validation
 
-Run relevant checks using the scripts available in package.json.
+Use scripts available in package.json.
 
-Expected checks:
+Expected commands:
 
     pnpm lint
     pnpm typecheck
@@ -463,18 +452,18 @@ Expected checks:
     pnpm test
     pnpm build
 
-Do not assume every script already exists.
+Not all scripts may exist during early development.
 
 ### Validation Rules
 
-- Fix issues introduced by the current task.
-- Do not suppress errors merely to pass checks.
+- Run checks relevant to the current changes.
+- Fix errors introduced by the current task.
+- Do not suppress errors merely to pass validation.
 - Test affected routes and components.
-- Test responsive layouts when changing UI.
-- Test both themes when changing styling.
-- Test both locales when changing user-facing content.
+- Test responsive layouts for UI changes.
+- Test both themes and locales when applicable.
 - Report checks that could not be executed.
-- Do not claim that a check passed without running it.
+- Never claim a check passed without running it.
 
 ## 18. Definition of Done
 
@@ -483,10 +472,8 @@ A task is complete when:
 - Approved requirements are implemented.
 - Code follows project conventions.
 - No unrelated changes are introduced.
-- Relevant validation checks pass.
-- Responsive behavior is verified when applicable.
-- Theme and localization support remain consistent.
-- Security and accessibility concerns are addressed.
+- Relevant validation checks pass or limitations are reported.
+- Accessibility, security, and performance are considered.
 - Documentation is updated when necessary.
 - The final diff has been reviewed.
 - A Conventional Commit message is suggested.
@@ -497,7 +484,7 @@ After completing an implementation task, provide:
 
 ### Summary
 
-Briefly describe what was implemented.
+Briefly describe the implementation.
 
 ### Changed Files
 
@@ -509,12 +496,11 @@ Report executed checks and actual results.
 
 ### Notes
 
-Explain important decisions, limitations, or remaining issues.
+Explain decisions, limitations, and remaining issues.
 
 ### Suggested Commit
 
-Provide one appropriate Conventional Commit message,
-or multiple messages if changes should be committed separately.
+Provide an appropriate Conventional Commit message.
 
 Keep responses concise, actionable, and in Vietnamese
 unless requested otherwise.
