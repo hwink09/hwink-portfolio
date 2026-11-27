@@ -1,0 +1,19 @@
+# Agent skills and generated agent instructions
+/.agents/
+/.codex/
+/AGENTS.md
+
+# Dependencies, build output, and generated files
+/node_modules/
+/.next/
+/out/
+/build/
+/coverage/
+/.vercel/
+/.husky/_/
+/next-env.d.ts
+*.tsbuildinfo
+
+# Lockfiles
+/pnpm-lock.yaml
+/skills-lock.json

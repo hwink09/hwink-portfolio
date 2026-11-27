@@ -2,23 +2,33 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
-First, run the development server:
+Use Node.js 22.22.1 or later, pnpm 12.6.0, and Git. On Windows, make sure Node.js is on the PATH used by Git for Windows so hooks can run.
+
+Install dependencies and start the development server:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+
+## Development checks
+
+| Command             | Purpose                                                |
+| ------------------- | ------------------------------------------------------ |
+| `pnpm lint`         | Check the project with ESLint                          |
+| `pnpm lint:fix`     | Apply ESLint fixes                                     |
+| `pnpm format`       | Format project files with Prettier                     |
+| `pnpm format:check` | Check project formatting                               |
+| `pnpm typecheck`    | Generate Next.js route types and run TypeScript checks |
+| `pnpm build`        | Build the application for production                   |
+
+`pnpm install` sets up Husky through the `prepare` script. The pre-commit hook runs ESLint and Prettier on matching staged files. The commit-msg hook checks Conventional Commits, for example `chore: configure development tooling`.
 
 ## Learn More
 
