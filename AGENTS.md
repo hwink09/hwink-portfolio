@@ -23,43 +23,32 @@ Prefer simplicity, consistency, and quality over unnecessary complexity.
 
 ## 2. Technology Stack
 
-### Core
+### Installed and configured
 
-- Next.js App Router
-- React
-- TypeScript
-- Tailwind CSS v4
-- pnpm
+- Next.js App Router with React and React DOM, React Compiler enabled, and Cache Components disabled.
+- TypeScript in strict mode and Tailwind CSS v4.
+- shadcn/ui with Radix primitives, class variance utilities, and Lucide React icons.
+- next-themes for theme preferences and next-intl for localized routing and messages.
+- pnpm, ESLint, Prettier with the Tailwind plugin, Husky, lint-staged, and Commitlint.
 
-### Planned Libraries
+Use [README.md](README.md#getting-started) for runtime requirements and Windows PATH guidance. Use `package.json` for direct dependency declarations and the root importer in `pnpm-lock.yaml` for resolved versions. A transitive entry does not establish a direct dependency.
 
-- shadcn/ui — UI components
-- next-themes — theme management
-- next-intl — internationalization
-- Motion — animations
-- Lucide React — icons
-- Vercel AI SDK — AI assistant
-- Zod — schema validation
-- MDX — content management
+### Approved technical direction awaiting implementation
 
-### Development Tools
+[DESIGN.md](DESIGN.md) defines the staged work for Neon Pitch tokens in Tailwind and shadcn/ui, responsive layout, localized navigation with next-intl, and an isolated WebGL scene with a static fallback. These plans use the existing stack where possible. Each new library and implementation task needs its own scope approval.
 
-- ESLint
-- Prettier
-- prettier-plugin-tailwindcss
-- Husky
-- lint-staged
-- Commitlint
+### Future dependency candidates
+
+- Three.js for the initial 3D proof of concept. React Three Fiber and Drei are conditional production candidates.
+- Motion for advanced DOM animation. GSAP, Lenis, and postprocessing are deferred candidates.
+- Vercel AI SDK for the future assistant, Zod for schema validation, and MDX for content when justified.
 
 ### Dependency Rules
 
-- Use pnpm exclusively.
-- Inspect package.json before using a dependency.
-- Do not assume planned libraries are installed.
+- Use pnpm exclusively. Inspect the manifest and lockfile before using a package.
 - Prefer existing dependencies and framework-native solutions.
-- Explain and obtain approval before adding dependencies.
-- Verify compatibility with the installed framework versions.
-- Keep pnpm-lock.yaml synchronized with package.json.
+- Explain the need and verify framework compatibility before seeking approval for a dependency addition.
+- Keep `pnpm-lock.yaml` synchronized with `package.json` when dependencies change.
 
 ## 3. Agent Skills
 
@@ -85,21 +74,19 @@ Project-level skills are located in `.agents/skills/`.
 - Review external scripts before executing them.
 - Do not install additional skills without approval.
 
+### Design Authority
+
+- `AGENTS.md` is the engineering authority for architecture, dependencies, workflow, validation, and Git.
+- [DESIGN.md](DESIGN.md) is the visual and experience authority. Read it before implementing or modifying UI.
+- Follow the approved HWINK — Beyond the Pitch direction, including its Real Madrid-inspired identity, Neon Pitch palette, and immersive motion. Prioritize accessibility and performance as effects are developed.
+
 ## 4. Development Workflow
 
-For non-trivial tasks:
-
-1. Understand the requirements.
-2. Inspect the existing codebase and Git status.
-3. Read relevant documentation and skills.
-4. Propose an implementation plan.
-5. Wait for approval before significant changes.
-6. Implement the approved scope.
-7. Run relevant validation checks.
-8. Review the final diff.
-9. Report results and suggest a commit message.
-
-For small, explicitly requested changes, proceed directly when safe.
+- **Approved project direction** sets the design and engineering baseline across tasks.
+- **Approved task scope** authorizes implementation of the agreed deliverables. Inspect the code and Git status, consult relevant docs and skills, and outline the plan for non-trivial work.
+- **Routine implementation decisions** within scope can proceed without repeated approval. Examples include reusing an existing primitive, naming an internal component, and adjusting spacing within the approved layout.
+- **Significant changes** require explicit approval when they fall outside the approved task scope. Examples include new dependencies, architectural changes, major layout or semantic palette changes, typography adoption or changes, brand changes, and material deviations from approved interaction behavior.
+- Run relevant checks, review the final diff, and report results with a suggested commit. Commit and push each require separate explicit permission.
 
 ### General Rules
 
@@ -125,9 +112,8 @@ For small, explicitly requested changes, proceed directly when safe.
 ### React and Next.js
 
 - Prefer Server Components by default.
-- Use Client Components only when necessary.
-- Keep client-side boundaries small.
-- Follow documentation for the installed Next.js version.
+- Use small Client Component boundaries for interactivity, browser APIs, and isolated WebGL scenes.
+- Read the relevant installed Next.js guides in `node_modules/next/dist/docs/` before implementing framework-specific behavior.
 - Avoid deprecated APIs and conventions.
 - Avoid unnecessary useEffect and derived state.
 - Use appropriate loading and error boundaries.
@@ -137,7 +123,7 @@ For small, explicitly requested changes, proceed directly when safe.
 
 ### Naming
 
-- Files and directories: kebab-case.
+- Use kebab-case for project files and directories. Follow Next.js conventions for reserved filenames and route segments such as `page.tsx`, `layout.tsx`, `route.ts`, `opengraph-image.tsx`, `proxy.ts`, `[locale]`, and `(group)`.
 - React components: PascalCase.
 - Functions and variables: camelCase.
 - Hooks: useSomething.
@@ -186,39 +172,9 @@ Use the following structure as a guideline:
 - Avoid unnecessary architectural layers.
 - Do not reorganize the project without approval.
 
-## 7. Design Principles
+## 7. Design Implementation
 
-### Visual Direction
-
-- Distinctive and professional developer aesthetic.
-- Intentional typography and visual hierarchy.
-- Consistent spacing and alignment.
-- Thoughtful use of whitespace.
-- Subtle, purposeful animations.
-- Responsive and accessible layouts.
-- Consistent light and dark themes.
-
-The final visual direction, typography, color palette,
-and layout must be approved before major UI implementation.
-
-### Anti AI-Slop
-
-- Avoid generic AI-generated aesthetics.
-- Avoid excessive gradients and glowing effects.
-- Avoid excessive glassmorphism.
-- Avoid unnecessary rounded containers.
-- Do not wrap every section in a card.
-- Avoid repetitive layouts without visual purpose.
-- Avoid meaningless animations and decorations.
-- Avoid generic marketing copy.
-- Do not sacrifice usability for visual effects.
-
-### Design References
-
-- Use approved references as inspiration.
-- Do not directly clone other portfolios.
-- Do not invent visual requirements.
-- Explain important design decisions.
+Follow [DESIGN.md](DESIGN.md) for composition, visual hierarchy, assets, and interaction. Use approved references as inspiration for original work and explain material design decisions. Apply the approval rules in the development workflow when a change affects the agreed direction.
 
 ## 8. Component Strategy
 
@@ -245,37 +201,17 @@ These are optional references, not mandatory dependencies.
 
 ## 9. Theme
 
-Support:
-
-- Light
-- Dark
-- System
-
-### Theme Rules
-
-- Use next-themes when implemented.
-- Use semantic CSS variables and design tokens.
-- Avoid hardcoded theme-dependent colors.
-- Prevent theme-related hydration mismatches.
-- Ensure sufficient contrast in both themes.
-- Test major UI changes in both themes.
+Use the existing next-themes integration for Light, Dark, and System. System is the default preference and follows the OS when active. Use semantic CSS variables, preserve hydration-safe theme controls, and verify contrast in both resolved palettes. [DESIGN.md](DESIGN.md) defines the dark-first art direction.
 
 ## 10. Internationalization
 
-Support:
+Use the existing next-intl routing and navigation helpers for English (`en`) and Vietnamese (`vi`). Organize messages by feature, keep keys aligned, and localize user-facing strings, metadata, dates, and numbers.
 
-- Vietnamese (vi)
-- English (en)
-
-### Localization Rules
-
-- Use next-intl when implemented.
-- Organize translation messages by feature.
-- Avoid hardcoded user-facing strings.
-- Keep translation keys consistent across locales.
-- Preserve the current route when switching languages.
-- Localize metadata, dates, and numbers where appropriate.
-- Test layouts with both languages.
+- Switch to the equivalent route in the target locale. Preserve supported query parameters and fragments when their target meaning remains valid. Map translated anchors when needed.
+- Resolve localized slugs through a shared content identity and the target translation. If a localized page is unavailable, use a relevant localized parent or landing page and communicate the fallback. An invalid locale should follow the existing not-found behavior.
+- Treat missing message keys as defects and check parity before release. An intentional fallback must use approved copy from the default locale (`en`) and surface the missing key to developers. Keep raw keys out of the UI.
+- For future API endpoints, pass the locale explicitly when the response depends on it. Validate it against the supported locale list at the request boundary and reject invalid values with an appropriate client error.
+- Publish locale-specific titles, descriptions, and social metadata. Use the owner-approved production origin through `SITE_URL` for canonical URLs, hreflang, and sitemap entries. Emit language alternates for existing translations and leave production URL metadata unpublished until the origin is confirmed.
 
 ### Language Conventions
 
@@ -288,19 +224,7 @@ Support:
 
 ## 11. Planned Features
 
-- Personal introduction.
-- About, education, and experience.
-- Technical skills.
-- Featured projects.
-- Detailed project case studies.
-- Resume download.
-- Blog and developer notes.
-- GitHub activity.
-- Contact.
-- Command palette.
-- AI personal assistant.
-
-Implement features incrementally based on approved tasks.
+Use [DESIGN.md](DESIGN.md) for the initial release priorities, homepage sequence, and future milestones. Implement features incrementally within approved tasks.
 
 ### Content Rules
 
@@ -357,9 +281,8 @@ developer's public profile, skills, experience, and projects.
 - Use the Next.js Metadata API.
 - Provide meaningful titles and descriptions.
 - Support localized metadata.
-- Configure canonical URLs and hreflang where applicable.
 - Provide Open Graph metadata.
-- Provide sitemap and robots configuration.
+- Provide sitemap and robots configuration as the release scope calls for them. Follow the production-origin rules in Internationalization.
 - Use accurate structured data when appropriate.
 - Maintain semantic heading hierarchy.
 
@@ -442,28 +365,27 @@ Examples:
 
 ## 17. Validation
 
-Use scripts available in package.json.
+Use the scripts available in `package.json` and select checks for the affected documentation, routes, components, and features.
 
-Expected commands:
+| Check               | When and how                                                                                                                                                                                                                          |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Read-only           | Use `pnpm lint` and `pnpm format:check` as relevant. For a strictly read-only TypeScript check, use `pnpm exec tsc --noEmit --incremental false` when required Next.js types already exist. Review `git diff --check` and Git status. |
+| Generates artifacts | `pnpm typecheck` runs Next.js type generation and can write generated types and TypeScript build info. `pnpm build` writes production build artifacts. Use these when artifacts are in scope.                                         |
+| Writes source files | `pnpm format` and `pnpm lint:fix` may rewrite files across the project. Target approved files explicitly when the scope is narrower.                                                                                                  |
+| Tests               | Run relevant tests when a test script exists.                                                                                                                                                                                         |
 
-    pnpm lint
-    pnpm typecheck
-    pnpm format:check
-    pnpm test
-    pnpm build
+For UI and behavior changes, use the affected rows in this validation matrix:
 
-Not all scripts may exist during early development.
+| Feature               | Validation                                                                                                                                                                                          |
+| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Theme                 | Check Light, Dark, and System with both OS schemes. Verify persistence, explicit overrides, hydration, and real component contrast.                                                                 |
+| Locale and metadata   | Check Vietnamese and English, translated metadata, narrow layouts, locale-aware links, and switching with valid query parameters, fragments, and localized slugs when present.                      |
+| Keyboard and overlays | Verify tab order, visible focus, keyboard activation, Escape and focus restoration where applicable, and focus visibility around sticky UI.                                                         |
+| Responsive layout     | Check narrow mobile, tablet, desktop, touch targets, and reflow with zoom. Include longer localized labels.                                                                                         |
+| Motion and WebGL      | Test reduced motion, unavailable WebGL, load failure, and context loss. Verify that the static fallback preserves content and actions. Check lifecycle cleanup and offscreen suspension for scenes. |
+| Production            | Build when changes affect runtime behavior, routing, rendering, fonts, dependencies, or deployment. Test affected routes and production-specific behavior when applicable.                          |
 
-### Validation Rules
-
-- Run checks relevant to the current changes.
-- Fix errors introduced by the current task.
-- Do not suppress errors merely to pass validation.
-- Test affected routes and components.
-- Test responsive layouts for UI changes.
-- Test both themes and locales when applicable.
-- Report checks that could not be executed.
-- Never claim a check passed without running it.
+Fix issues introduced by the task, report unrelated failures and unavailable checks, and record actual results. Avoid suppressing errors to pass validation.
 
 ## 18. Definition of Done
 
